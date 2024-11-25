@@ -2,17 +2,22 @@ import asyncpg
 import asyncio
 from dotenv import load_dotenv
 import os
+from contextlib import asynccontextmanager
 
-# Load environment variables from .env
+# load environment variables from .env
 load_dotenv()
 
 DATABASE_URL = os.getenv('DATABASE_URL')
 
-# Establish a connection pool
+# initiate database connection
+@asynccontextmanager
 async def get_db_connection():
     connection = await asyncpg.connect(DATABASE_URL)
-    return connection
+    try:
+        yield connection
+    finally:
+        await connection.close()
 
-# Close the connection
+# for closing the connection manually
 async def close_db_connection(connection):
     await connection.close()
