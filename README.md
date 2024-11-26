@@ -2,6 +2,10 @@
 
 A Python backend built using Starlette to manage image data and positions, with PostgreSQL as the database. This API supports retrieving and updating image data with middleware for handling unknown routes and CORS.
 
+### Deployed URL
+
+Base API URL: https://python-image-rearrange.vercel.app/
+
 ## Table of Contents
 - [Project Overview](#project-overview)
 - [Project setup](#setting-up-the-project)
