@@ -68,6 +68,26 @@ Create a .env file in the root directory and define the following:
 
     uvicorn app.main:app --reload
 
+### Docker Setup
+
+**Prerequisites**:
+- Docker and Docker Compose installed on your system.
+
+**Steps**:
+
+- Build and start the containers:
+    ```
+    docker-compose up    
+    ```
+- The app will be accessible at:
+  - Python API: http://localhost:8000
+  - React frontend: http://localhost:8080
+
+- To stop the containers:
+    ```
+    docker-compose down    
+    ```
+    
 ---
 ## API Endpoints
 
