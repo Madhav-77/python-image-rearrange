@@ -5,7 +5,7 @@
         "use": "@vercel/python"
     }],
     "routes": [{
-        "src": "/api/images/(.*)",
+        "src": "/",
         "dest": "app/main.py"
     }]
 }

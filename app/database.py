@@ -7,8 +7,6 @@ from contextlib import asynccontextmanager
 # load environment variables from .env
 load_dotenv(override=True)
 
-print(f"Database URL: {os.getenv('DATABASE_URL')}")
-
 DATABASE_URL = os.getenv('DATABASE_URL')
 
 # initiate database connection
