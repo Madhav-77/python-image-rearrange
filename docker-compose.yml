@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    container_name: starlette_app
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://postgres:Admin123@db:5432/rearrange_zania_app
+    depends_on:
+      - db
+    volumes:
+      - .:/app
+    networks:
+      - app-network
+
+  # PostgreSQL Service
+  db:
+    image: postgres:latest
+    container_name: postgres_db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=Admin123
+      - POSTGRES_DB=rearrange_zania_app
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - app-network
+
+  react_app:
+    build:
+      context: ../react-image-rearrange/rearrange-app  # Path to your frontend React app directory
+    container_name: react_app
+    ports:
+      - "8080:80"  # Expose the port for the React app (nginx will serve it on port 80)
+    networks:
+      - app-network
+    depends_on:
+      - app  # Example if you need to connect to a backend service
+
+volumes:
+  postgres_data:
+
+networks:
+  app-network:
+    driver: bridge
