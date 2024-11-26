@@ -1,14 +1,11 @@
 {
     "version": 2,
     "builds": [{
-        "src": "api/main.py",
+        "src": "app/routes.py",
         "use": "@vercel/python"
     }],
     "routes": [{
-        "src": "/api/(.*)",
-        "dest": "/api/main.py"
-    }],
-    "env": {
-        "DATABASE_URL": "postgres://user:password@hostname:port/database_name"
-    }
+        "src": "/api/images/(.*)",
+        "dest": "/app/routes.py"
+    }]
 }
