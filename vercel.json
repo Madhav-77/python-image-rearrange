@@ -6,6 +6,6 @@
     }],
     "routes": [{
         "src": "/api/images/(.*)",
-        "dest": "/app/routes.py"
+        "dest": "app/main.py"
     }]
 }
